@@ -14,7 +14,7 @@ module.exports = {
       src: path.resolve(__dirname, '../src'),
     },
   },
-  entry: ['./src/app.js'],
+  entry: ['./src/app.tsx'],
   output: {
     filename: 'frontassets/js/app-min.js',
     path: path.join(__dirname, '../build/client'),
@@ -24,7 +24,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         use: 'happypack/loader?id=babel',
         exclude: /node_modules/,
       },
