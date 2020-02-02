@@ -1,0 +1,35 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "globals": {
+    "window": true,
+    "FormData": true,
+    "sessionStorage": true,
+    "localStorage": true,
+    "document": true,
+    "navigator": true,
+    "requestAnimationFrame": true,
+    "location": true,
+    "Audio": true
+  },
+  "plugins": ["react", "prettier", "react-hooks"],
+  "rules": {
+    "react/prop-types": 1,
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-param-reassign": "warn",
+    "no-prototype-builtins": "warn",
+    "consistent-return": "warn",
+    "no-use-before-define": "warn",
+    "no-nested-ternary": "warn",
+    "array-callback-return": "warn",
+    "prefer-destructuring": "warn",
+    "react/no-string-refs": "warn",
+    "import/no-unresolved": "warn",
+    "no-unused-expressions": "warn",
+    "import/extensions": "warn",
+    "react/static-property-placement": "warn",
+    "react/state-in-constructor": "warn",
+    "react/jsx-props-no-spreading": "warn"
+  }
+}
