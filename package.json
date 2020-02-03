@@ -9,8 +9,7 @@
     "build:win32": "echo SCRIPT DOES NOT EXIST",
     "build:linux:darwin": "./build.sh",
     "clean": "rimraf ./build/*",
-    "fix-code": "prettier --write 'source/**/*.{js,jsx}'",
-    "fix-styles": "prettier-stylelint --write 'source/**/*.{css,scss}'",
+    "fix-code": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "lint": "eslint source --quiet"
   },
   "author": "Крохмаль (Чернявский) Даниил",
@@ -31,6 +30,7 @@
     "@babel/plugin-transform-spread": "7.8.3",
     "@babel/preset-env": "7.8.4",
     "@babel/preset-react": "7.8.3",
+    "@babel/preset-typescript": "7.8.3",
     "@babel/register": "7.8.3",
     "@babel/runtime-corejs3": "7.8.4",
     "@hot-loader/react-dom": "^16.11.0",
@@ -38,13 +38,11 @@
     "@types/react-dom": "16.9.5",
     "@types/react-router-dom": "^5.1.3",
     "@types/webpack-env": "^1.15.1",
-    "@typescript-eslint/parser": "^2.18.0",
+    "@typescript-eslint/parser": "2.18.0",
     "autoprefixer": "9.7.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "cache-loader": "^4.1.0",
-    "clear-require": "^3.0.0",
     "compression-webpack-plugin": "3.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "3.4.2",
@@ -53,6 +51,8 @@
     "eslint": "6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "6.10.0",
+    "eslint-import-resolver-typescript": "2.0.0",
+    "eslint-loader": "3.0.3",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
@@ -60,7 +60,6 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^5.0.2",
     "glob": "^7.1.6",
-    "happypack": "^5.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.1",
@@ -69,12 +68,10 @@
     "koa-webpack": "5.3.0",
     "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-csso": "^4.0.0",
     "postcss-loader": "^3.0.0",
     "prettier": "1.19.1",
-    "prettier-stylelint": "^0.4.2",
     "pretty": "^2.0.0",
     "purgecss-webpack-plugin": "^2.0.5",
     "react-hot-loader": "4.12.19",
@@ -83,8 +80,6 @@
     "sass-loader": "8.0.2",
     "source-map-loader": "0.2.4",
     "style-loader": "1.1.3",
-    "stylelint": "13.0.0",
-    "stylelint-config-standard": "^19.0.0",
     "ts-loader": "6.2.1",
     "typescript": "3.7.5",
     "webpack": "4.41.5",
@@ -97,17 +92,23 @@
     "write-file-webpack-plugin": "^4.5.1"
   },
   "dependencies": {
+    "@material-ui/core": "4.9.1",
+    "@material-ui/icons": "4.9.1",
     "axios": "0.19.2",
-    "classnames": "^2.2.6",
+    "clsx": "1.0.4",
     "core-js": "3.6.4",
     "dayjs": "1.8.19",
+    "effector": "20.11.5",
+    "effector-react": "20.6.0",
     "fast-async": "^6.3.8",
-    "prop-types": "^15.7.2",
+    "history": "4.10.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
+    "reset-css": "5.0.1",
+    "reshadow": "0.0.1-alpha.73",
     "script-ext-html-webpack-plugin": "^2.1.4"
   },
   "husky": {
@@ -116,15 +117,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --quiet",
       "prettier --write"
     ],
     "*.{json,eslintrc}": [
       "prettier --write"
-    ],
-    "*.{css,scss}": [
-      "prettier-stylelint --write"
     ]
   }
 }

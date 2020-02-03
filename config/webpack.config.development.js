@@ -32,17 +32,18 @@ module.exports = () =>
         },
       ],
     },
-    devtool: 'inline-source-map',
     devServer: {
-      historyApiFallback: {
-        disableDotRule: true,
-      },
-      progress: true,
+      port: 3000,
+      open: false,
+      historyApiFallback: true,
+      hot: true,
+      overlay: true,
     },
+    devtool: 'source-map',
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
+        analyzerHost: 'localhost',
         analyzerPort: 8888,
         openAnalyzer: false,
       }),

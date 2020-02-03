@@ -1,17 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HappyPack = require('happypack');
-
-const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss'],
-    modules: ['node_modules'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.css', '.scss'],
     alias: {
-      src: path.resolve(__dirname, '../src'),
+      '@lib': path.resolve(__dirname, '../src/lib'),
+      '@features': path.resolve(__dirname, '../src/features'),
+      '@assets': path.resolve(__dirname, '../src/assets'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
     },
   },
   entry: ['./src/app.tsx'],
@@ -25,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        use: 'happypack/loader?id=babel',
+        use: ['reshadow/webpack/loader', 'babel-loader', 'cache-loader', ],
         exclude: /node_modules/,
       },
       {
@@ -64,11 +63,6 @@ module.exports = {
   },
 
   plugins: [
-    new HappyPack({
-      id: 'babel',
-      threadPool: happyThreadPool,
-      loaders: ['babel-loader', 'cache-loader'],
-    }),
     new webpack.DefinePlugin({
       'process.env.BROWSER': JSON.stringify(true),
     }),

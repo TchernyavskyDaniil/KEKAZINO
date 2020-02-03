@@ -10,6 +10,7 @@
         "exclude": ["transform-async-to-generator", "transform-regenerator"]
       }
     ],
+    "@babel/preset-typescript",
     "@babel/preset-react"
   ],
   "plugins": [
@@ -43,9 +44,7 @@
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-numeric-separator",
     "@babel/plugin-proposal-throw-expressions",
-    ["transform-react-remove-prop-types", {
-      "removeImport": true
-    }]
+    ["reshadow/babel"]
   ],
   "env": {
     "development": {

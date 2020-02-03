@@ -15,7 +15,7 @@
   "plugins": ["react", "prettier", "react-hooks"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
-    "react/prop-types": 1,
+    "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
     "no-param-reassign": "warn",
@@ -26,11 +26,25 @@
     "array-callback-return": "warn",
     "prefer-destructuring": "warn",
     "react/no-string-refs": "warn",
-    "import/no-unresolved": "warn",
+    "import/no-unresolved": 0,
     "no-unused-expressions": "warn",
-    "import/extensions": "warn",
+    "import/extensions": 0,
     "react/static-property-placement": "warn",
     "react/state-in-constructor": "warn",
-    "react/jsx-props-no-spreading": "warn"
+    "react/jsx-props-no-spreading": "warn",
+    "import/prefer-default-export": 0
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
   }
 }
