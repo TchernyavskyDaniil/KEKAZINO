@@ -10,6 +10,7 @@ export const useUploaderStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       height: '100vh',
       justifyContent: 'center',
+      flexDirection: 'column',
       backgroundColor: COLORS.MAIN_BACKGROUND,
     },
     wrapper: {

@@ -32,6 +32,7 @@ module.exports = () =>
         },
       ],
     },
+    mode: 'development',
     devServer: {
       port: 3000,
       open: false,
@@ -39,7 +40,7 @@ module.exports = () =>
       hot: true,
       overlay: true,
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'server',

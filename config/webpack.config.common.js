@@ -11,6 +11,7 @@ module.exports = {
       '@features': path.resolve(__dirname, '../src/features'),
       '@assets': path.resolve(__dirname, '../src/assets'),
       '@pages': path.resolve(__dirname, '../src/pages'),
+      'react-dom': '@hot-loader/react-dom',
     },
   },
   entry: ['./src/app.tsx'],
@@ -24,7 +25,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        use: ['reshadow/webpack/loader', 'babel-loader', 'cache-loader', ],
+        use: ['reshadow/webpack/loader', 'babel-loader', ],
         exclude: /node_modules/,
       },
       {

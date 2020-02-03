@@ -4,11 +4,11 @@ import { Router } from 'react-router-dom';
 
 import { history } from '@lib/browserHistory';
 
-import { StackPages } from '@pages/StackPages';
+import StackPages from '@pages/StackPages';
 
 import 'reset-css';
 
-ReactDOM.hydrate(
+ReactDOM.render(
   <Router history={history}>
     <StackPages />
   </Router>,

@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import styled from 'reshadow';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -9,35 +8,44 @@ import CheckIcon from '@material-ui/icons/Check';
 import SaveIcon from '@material-ui/icons/Save';
 
 import { useUploaderStyles } from '@pages/ImageUploader/useUploaderStyles';
+import { base64ImageConverter } from '@lib/utils';
 
-interface MInputFile {
-  onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+interface InputFileProps {
+  handleOnChangeFile: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
 
-const InputFile = (props: MInputFile): JSX.Element =>
+const InputImage = ({ handleOnChangeFile }: InputFileProps): JSX.Element =>
   styled`
     input {
       display: none;
     }
-  `(<input onChange={props.onChange} id="file-upload" type="file" />);
+  `(<input onChange={handleOnChangeFile} id="file-upload" type="file" accept="image/*" />);
 
-let timer: number;
+interface FileViewerProps {
+  imageUrl: string;
+}
+
+const FileViewer = ({ imageUrl }: FileViewerProps): JSX.Element =>
+  styled`
+    img {
+      width: 600px;
+      margin-top: 40px;
+    }
+  `(
+    <img
+      alt="Ваше загруженное фото, если вы это видите, то что - то не так :)"
+      title="Ваше загруженное фото"
+      src={imageUrl}
+    />,
+  );
 
 export const ImageUploader: React.FC = (): JSX.Element => {
   const classes = useUploaderStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
+  const [imageUrl, setImageUrl] = React.useState('');
 
-  const buttonClassname = clsx({
-    [classes.buttonSuccess]: success,
-  });
-
-  React.useEffect(
-    () => () => {
-      window.clearTimeout(timer);
-    },
-    [],
-  );
+  const buttonClassname = success ? classes.buttonSuccess : '';
 
   const handleButtonClick = () => {
     if (!loading) {
@@ -49,15 +57,19 @@ export const ImageUploader: React.FC = (): JSX.Element => {
     }
   };
 
-  const handleOnChangeFile = ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
-    if (!loading) {
-      console.log(files);
-      setSuccess(false);
-      setLoading(true);
-      timer = window.setTimeout(() => {
+  const handleOnChangeFile = async ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
+    if (files) {
+      const uploadedFile = files[0];
+      const isFile = uploadedFile.type.includes('image');
+      if (isFile) {
+        setSuccess(false);
+        setLoading(true);
+
+        await base64ImageConverter(uploadedFile, setImageUrl);
+
         setSuccess(true);
         setLoading(false);
-      }, 2000);
+      }
     }
   };
 
@@ -82,9 +94,10 @@ export const ImageUploader: React.FC = (): JSX.Element => {
           onClick={handleButtonClick}>
           Download your photo
         </Button>
-        <InputFile onChange={handleOnChangeFile} />
+        <InputImage handleOnChangeFile={handleOnChangeFile} />
         {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
       </div>
+      {imageUrl && <FileViewer imageUrl={imageUrl} />}
     </div>
   );
 };

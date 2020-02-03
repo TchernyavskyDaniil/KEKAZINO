@@ -10,7 +10,9 @@
     "navigator": true,
     "requestAnimationFrame": true,
     "location": true,
-    "Audio": true
+    "Audio": true,
+    "FileReader": true,
+    "Blob": true
   },
   "plugins": ["react", "prettier", "react-hooks"],
   "rules": {
@@ -32,7 +34,8 @@
     "react/static-property-placement": "warn",
     "react/state-in-constructor": "warn",
     "react/jsx-props-no-spreading": "warn",
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "react/prefer-stateless-function": "off"
   },
   "settings": {
     "import/parsers": {
