@@ -17,6 +17,10 @@ export const useUploaderStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       position: 'relative',
     },
+    button: {
+      margin: theme.spacing(0, 2),
+      minWidth: 120,
+    },
     buttonSuccess: {
       backgroundColor: green[500],
       '&:hover': {
@@ -37,6 +41,9 @@ export const useUploaderStyles = makeStyles((theme: Theme) =>
       left: '50%',
       marginTop: -12,
       marginLeft: -12,
+    },
+    gridRoot: {
+      marginTop: 28,
     },
   }),
 );

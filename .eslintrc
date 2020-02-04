@@ -35,7 +35,9 @@
     "react/state-in-constructor": "warn",
     "react/jsx-props-no-spreading": "warn",
     "import/prefer-default-export": 0,
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "global-require": "warn",
+    "no-unused-vars": "warn"
   },
   "settings": {
     "import/parsers": {

@@ -8,6 +8,11 @@ import StackPages from '@pages/StackPages';
 
 import 'reset-css';
 
+if (process.env.DEV) {
+  const createInspector = require('effector-logger').createInspector;
+  createInspector();
+}
+
 ReactDOM.render(
   <Router history={history}>
     <StackPages />

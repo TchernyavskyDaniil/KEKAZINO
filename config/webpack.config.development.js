@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const Merge = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -59,6 +60,9 @@ module.exports = () =>
       }),
       new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'async',
+      }),
+      new webpack.DefinePlugin({
+        'process.env.DEV': JSON.stringify(true),
       }),
     ],
   });
