@@ -2,7 +2,6 @@ import * as React from 'react';
 import clsx from 'clsx';
 import styled from 'reshadow';
 import { useStore } from 'effector-react';
-
 import Fab from '@material-ui/core/Fab';
 import CheckIcon from '@material-ui/icons/Check';
 import SaveIcon from '@material-ui/icons/Save';
@@ -32,8 +31,6 @@ const FileUploaderMemoized: React.FC = () => {
       }
     }
   };
-
-  console.log('render');
 
   return (
     <>

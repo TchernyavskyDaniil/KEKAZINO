@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'reshadow';
 import { useStore } from 'effector-react';
-
+import Image from 'material-ui-image';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import SaveIcon from '@material-ui/icons/Save';
@@ -29,7 +28,13 @@ export const ImageUploader: React.FC = () => {
   return (
     <div className={classes.root}>
       <FileUploader />
-      {imageUrl && <FileViewer imageUrl={imageUrl} />}
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          style={{ marginTop: '20px', paddingTop: 0 }}
+          imageStyle={{ width: '600px', position: 'relative' }}
+        />
+      )}
       {isDone && (
         <Grid
           className={classes.gridRoot}
@@ -58,21 +63,3 @@ export const ImageUploader: React.FC = () => {
     </div>
   );
 };
-
-interface FileViewerProps {
-  imageUrl: string;
-}
-
-const FileViewer = ({ imageUrl }: FileViewerProps): JSX.Element =>
-  styled`
-    img {
-      width: 600px;
-      margin-top: 20px;
-    }
-  `(
-    <img
-      alt="Ваше загруженное фото, если вы это видите, то что - то не так :)"
-      title="Ваше загруженное фото"
-      src={imageUrl}
-    />,
-  );
