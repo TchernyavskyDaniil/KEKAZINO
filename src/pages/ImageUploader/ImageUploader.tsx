@@ -15,14 +15,14 @@ import { useUploaderStyles } from '@pages/ImageUploader/useUploaderStyles';
 import {
   $userImageUrl,
   removeUploadedImage,
+  $imageFetching,
   pickNewUserImage,
-  imageFetching,
 } from '@pages/ImageUploader/model';
 
 export const ImageUploader: React.FC = () => {
   const imageUrl = useStore($userImageUrl);
-  const isLoading = useStore(imageFetching.isLoading);
-  const isDone = useStore(imageFetching.isDone);
+  const isLoading = useStore($imageFetching.isLoading);
+  const isDone = useStore($imageFetching.isDone);
 
   const classes = useUploaderStyles();
 

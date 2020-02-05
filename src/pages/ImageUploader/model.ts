@@ -29,6 +29,6 @@ export const pickNewUserImage = createEffect({
 
 $userImageUrl.on(addUserImageUrl, (_, url) => url).reset(removeUploadedImage);
 
-export const imageFetching = createFetching(pickNewUserImage, 'initial', {
+export const $imageFetching = createFetching(pickNewUserImage, 'initial', {
   reset: removeUploadedImage,
 });
