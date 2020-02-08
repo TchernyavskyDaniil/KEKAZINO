@@ -44,7 +44,6 @@
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-numeric-separator",
     "@babel/plugin-proposal-throw-expressions",
-    ["reshadow/babel"],
     ["effector/babel-plugin", { "addLoc": true }]
   ],
   "env": {

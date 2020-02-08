@@ -1,6 +1,5 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import styled from 'reshadow';
 import { useStore } from 'effector-react';
 import Fab from '@material-ui/core/Fab';
 import CheckIcon from '@material-ui/icons/Check';
@@ -11,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import { $imageFetching, pickNewUserImage } from '@pages/ImageUploader/model';
 
 import { useFileUploaderStyles } from '@features/FileUploader/useFileUploaderStyles';
+
+import './styles.pcss';
 
 const FileUploaderMemoized: React.FC = () => {
   const isDone = useStore($imageFetching.isDone);
@@ -53,7 +54,13 @@ const FileUploaderMemoized: React.FC = () => {
           onClick={handleButtonClick}>
           Choose your best photo!
         </Button>
-        <InputImage handleOnChangeImage={pickNewUserImage} />
+        <input
+          className="file-uploader__hidden"
+          onChange={pickNewUserImage}
+          id="file-upload"
+          type="file"
+          accept="image/*"
+        />
         {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
       </div>
     </>
@@ -61,14 +68,3 @@ const FileUploaderMemoized: React.FC = () => {
 };
 
 export const FileUploader = React.memo(FileUploaderMemoized);
-
-interface InputFileProps {
-  handleOnChangeImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputImage = ({ handleOnChangeImage }: InputFileProps): JSX.Element =>
-  styled`
-    input {
-      display: none;
-    }
-  `(<input onChange={handleOnChangeImage} id="file-upload" type="file" accept="image/*" />);

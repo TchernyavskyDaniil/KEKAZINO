@@ -10,7 +10,7 @@ module.exports = () =>
     module: {
       rules: [
         {
-          test: /\.s?css$/,
+          test: /\.(css|pcss)$/,
           exclude: /node_modules/,
           use: [
             {
@@ -21,7 +21,7 @@ module.exports = () =>
               options: { sourceMap: true },
             },
             {
-              loader: 'sass-loader',
+              loader: 'postcss-loader',
               options: { sourceMap: true },
             },
           ],

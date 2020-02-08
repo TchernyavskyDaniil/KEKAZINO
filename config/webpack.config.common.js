@@ -25,7 +25,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|js)x?$/,
-        use: ['reshadow/webpack/loader', 'babel-loader', ],
+        use: ['babel-loader', 'cache-loader'],
         exclude: /node_modules/,
       },
       {

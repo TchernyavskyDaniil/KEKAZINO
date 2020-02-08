@@ -1,0 +1,25 @@
+@keyframes moveSlideshow {
+    0%, 100% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+}
+
+.slots {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+}
+
+.slots__animation {
+    animation: moveSlideshow 0.2s linear infinite;
+}
+
+.slots__result {
+    justify-content: center;
+}
