@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { createEvent, createStore, createEffect, Event } from 'effector';
 import React from 'react';
 import { base64ImageConverter } from '@lib/utils';

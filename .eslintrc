@@ -16,7 +16,10 @@
   },
   "plugins": ["react", "prettier", "react-hooks"],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
     "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
@@ -34,6 +37,7 @@
     "react/static-property-placement": "warn",
     "react/state-in-constructor": "warn",
     "react/jsx-props-no-spreading": "warn",
+    "import/no-cycle": "warn",
     "import/prefer-default-export": 0,
     "react/prefer-stateless-function": "off",
     "global-require": "warn",

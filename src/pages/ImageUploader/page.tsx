@@ -7,7 +7,11 @@ import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import { useUploaderStyles } from '@pages/ImageUploader/useUploaderStyles';
-import { $userImageUrl, removeUploadedImage, $imageFetching } from '@pages/ImageUploader/model';
+import {
+  $userImageUrl,
+  removeUploadedImage,
+  $imageFetching,
+} from '@pages/ImageUploader/model';
 
 import { FileUploader } from '@features/FileUploader';
 

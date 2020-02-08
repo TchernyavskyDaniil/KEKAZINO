@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
-// eslint-disable-next-line no-unused-vars
-import { Switch, Route, Redirect, withRouter, RouteComponentProps } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+  withRouter,
+  RouteComponentProps,
+} from 'react-router-dom';
 
 import { ImageUploader } from '@pages/ImageUploader/page';
 import { ErrorPage } from '@pages/ErrorPage/page';

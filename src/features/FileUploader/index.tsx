@@ -43,7 +43,9 @@ const FileUploaderMemoized: React.FC = () => {
           onClick={handleButtonClick}>
           {isDone ? <CheckIcon /> : <SaveIcon />}
         </Fab>
-        {isLoading && <CircularProgress size={68} className={classes.fabProgress} />}
+        {isLoading && (
+          <CircularProgress size={68} className={classes.fabProgress} />
+        )}
       </div>
       <div className={classes.wrapper}>
         <Button
@@ -61,7 +63,9 @@ const FileUploaderMemoized: React.FC = () => {
           type="file"
           accept="image/*"
         />
-        {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
+        {isLoading && (
+          <CircularProgress size={24} className={classes.buttonProgress} />
+        )}
       </div>
     </>
   );

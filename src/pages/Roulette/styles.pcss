@@ -1,4 +1,4 @@
-@keyframes moveSlideshow {
+@keyframes moveSlots {
     0%, 100% {
         top: 0;
     }
@@ -16,8 +16,16 @@
     position: absolute;
 }
 
-.slots__animation {
-    animation: moveSlideshow 0.2s linear infinite;
+.slots__animation-start {
+    animation: moveSlots 0.2s linear infinite;
+}
+
+.slots__animation-middle {
+    animation: moveSlots 1s linear infinite;
+}
+
+.slots__animation-end {
+    animation: moveSlots 1.5s linear infinite;
 }
 
 .slots__result {

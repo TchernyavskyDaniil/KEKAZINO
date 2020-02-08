@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 
