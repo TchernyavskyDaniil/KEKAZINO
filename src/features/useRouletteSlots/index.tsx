@@ -40,6 +40,7 @@ export const useRouletteSlots: () => {
         }),
       DEFAULT_TIMEOUT_DELAY,
     );
+
     const newSlotsEffects = slotEffects.filter(
       (slot: string) => slot !== slotRandomValue,
     );
