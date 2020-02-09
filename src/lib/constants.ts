@@ -18,3 +18,10 @@ export const ROULETTE_SLOTS_EFFECTS = [
   'November',
   'December',
 ];
+
+export const STORAGE = {
+  IMAGE: {
+    type: 'image',
+    initialValue: '',
+  },
+};

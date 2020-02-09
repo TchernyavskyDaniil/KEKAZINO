@@ -1,13 +1,16 @@
 import { createEvent, createStore, createEffect, Event } from 'effector';
 import React from 'react';
-import { base64ImageConverter } from '@lib/utils';
+
+import { base64ImageConverter, getSavedImageFromStorage } from '@lib/utils';
 import { createFetching } from '@lib/createFetching';
 
-export const $userImageUrl = createStore<string>('');
+const savedImageFromStorage = getSavedImageFromStorage();
+
+export const $userImageUrl = createStore<string>(savedImageFromStorage);
+export const $isSaveImageToLocalStorage = createStore<boolean>(false);
 
 export const addUserImageUrl: Event<string> = createEvent();
-export const setUploadingImageStatus: Event<boolean> = createEvent();
-export const setSuccessfullyImageUploadedStatus: Event<boolean> = createEvent();
+export const setImageToLocalStorageStatus: Event<boolean> = createEvent();
 
 // Events - resets
 export const removeUploadedImage: Event<void> = createEvent();
@@ -27,6 +30,10 @@ export const pickNewUserImage = createEffect({
 });
 
 $userImageUrl.on(addUserImageUrl, (_, url) => url).reset(removeUploadedImage);
+$isSaveImageToLocalStorage.on(
+  setImageToLocalStorageStatus,
+  (_, isImageToLocalStorage) => isImageToLocalStorage,
+);
 
 export const $imageFetching = createFetching(pickNewUserImage, 'initial', {
   reset: removeUploadedImage,

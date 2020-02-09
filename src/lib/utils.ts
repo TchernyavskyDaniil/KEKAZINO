@@ -1,3 +1,5 @@
+import { STORAGE } from '@lib/constants';
+
 export const base64ImageConverter = async (
   file: File,
   imageSetter: Function,
@@ -25,3 +27,10 @@ export const getRandomValueFromArray = (values: Array<any>) => {
 
   return randomValue;
 };
+
+export const LS = {
+  get: (token: string) => localStorage.getItem(token),
+  set: (token: string, value: string) => localStorage.setItem(token, value),
+};
+
+export const getSavedImageFromStorage = () => LS.get(STORAGE.IMAGE.type) || '';

@@ -16,7 +16,11 @@ export const useUploaderStyles = makeStyles((theme: Theme) =>
       minWidth: 120,
     },
     gridRoot: {
-      marginTop: 28,
+      marginTop: 14,
+    },
+    label: {
+      marginTop: 14,
+      marginLeft: 8,
     },
   }),
 );

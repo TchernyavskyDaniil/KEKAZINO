@@ -13,11 +13,12 @@ import { ErrorPage } from '@pages/ErrorPage/page';
 import { Roulette } from '@pages/Roulette/page';
 
 class StackPages extends React.Component<RouteComponentProps> {
-  componentDidCatch() {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     const {
       history: { push },
     } = this.props;
     push('/404');
+    console.log(error, errorInfo);
   }
 
   render() {
