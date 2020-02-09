@@ -5,7 +5,7 @@ export const useUploaderStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
       alignItems: 'center',
-      height: '100vh',
+      minHeight: '80vh',
       justifyContent: 'center',
       flexDirection: 'column',
     },

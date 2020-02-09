@@ -79,7 +79,7 @@ export const ImageUploader: React.FC = () => {
             }
             label={
               <span className="image-uploader__storage-desc">
-                Would you like save image to storage?
+                Would you like to save the image inside Storage?
               </span>
             }
             className={classes.label}
