@@ -21,7 +21,7 @@ export const useRouletteStyles = makeStyles((theme: Theme) =>
       flex: 1,
       display: 'flex',
       justifyContent: 'center',
-      height: '80%',
+      height: '100%',
       position: 'relative',
       overflow: 'hidden',
     },
