@@ -26,7 +26,7 @@ class StackPages extends React.Component<RouteComponentProps> {
         <Route exact path="/" component={ImageUploader} />
         <Route path="/404" component={ErrorPage} />
         {/* DELETE ROUTES UNDER COMMIT */}
-        <Route path="/s2" component={Roulette} />
+        <Route path="/roulette" component={Roulette} />
         <Redirect to="/" />
       </Switch>
     );

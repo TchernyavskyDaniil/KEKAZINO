@@ -14,7 +14,8 @@ export const useRouletteStyles = makeStyles((theme: Theme) =>
     },
     grid: {
       width: '80%',
-      height: '80%',
+      height: '50vh',
+      marginBottom: '40px',
       justifyContent: 'space-around',
     },
     gridContainer: {

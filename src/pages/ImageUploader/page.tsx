@@ -1,10 +1,13 @@
 import React from 'react';
 import { useStore } from 'effector-react';
+import { useHistory } from 'react-router-dom';
 import Image from 'material-ui-image';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
+
+import { FileUploader } from '@features/FileUploader';
 
 import { useUploaderStyles } from '@pages/ImageUploader/useUploaderStyles';
 import {
@@ -12,8 +15,7 @@ import {
   removeUploadedImage,
   $imageFetching,
 } from '@pages/ImageUploader/model';
-
-import { FileUploader } from '@features/FileUploader';
+import { setImageUrlExistStatus } from '@pages/Roulette/model';
 
 export const ImageUploader: React.FC = () => {
   const imageUrl = useStore($userImageUrl);
@@ -21,13 +23,16 @@ export const ImageUploader: React.FC = () => {
 
   const classes = useUploaderStyles();
 
+  const history = useHistory();
+
   const handleOnClickToDeleteImage = () => {
     removeUploadedImage();
   };
 
-  // const handleOnClickToSaveImage = () => {
-  //
-  // }
+  const handleOnClickToSaveImage = () => {
+    setImageUrlExistStatus(true);
+    history.push('/roulette');
+  };
 
   return (
     <div className={classes.root}>
@@ -51,7 +56,8 @@ export const ImageUploader: React.FC = () => {
             color="primary"
             size="medium"
             className={classes.button}
-            startIcon={<SaveIcon />}>
+            startIcon={<SaveIcon />}
+            onClick={handleOnClickToSaveImage}>
             Save it!
           </Button>
           <Button
