@@ -8,7 +8,7 @@ import StackPages from '@pages/StackPages';
 
 import 'reset-css';
 
-import './assets/variables/styles.pcss';
+import './variables/styles.pcss';
 import './styles.pcss';
 
 if (process.env.DEV) {
