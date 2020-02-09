@@ -8,6 +8,7 @@ const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const commonConfig = require('./webpack.config.common');
 
 // const PATHS = {
@@ -25,8 +26,8 @@ module.exports = folder =>
     module: {
       rules: [
         {
-          test: /\.(sa|sc|c)ss$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+          test: /\.(css|pcss)$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
         },
       ],
     },
@@ -70,6 +71,11 @@ module.exports = folder =>
         threshold: 10240,
         minRatio: 0.8,
         cache: true,
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'bundleAnalyzer.html',
+        openAnalyzer: false,
       }),
     ],
   });

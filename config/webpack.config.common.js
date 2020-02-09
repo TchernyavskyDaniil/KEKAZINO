@@ -1,20 +1,20 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HappyPack = require('happypack');
-
-const happyThreadPool = HappyPack.ThreadPool({ size: 6 });
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss'],
-    modules: ['node_modules'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.css', '.scss'],
     alias: {
-      src: path.resolve(__dirname, '../src'),
+      '@lib': path.resolve(__dirname, '../src/lib'),
+      '@features': path.resolve(__dirname, '../src/features'),
+      '@assets': path.resolve(__dirname, '../src/assets'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
+      'react-dom': '@hot-loader/react-dom',
     },
   },
-  entry: ['./src/app.js'],
+  entry: ['./src/app.tsx'],
   output: {
     filename: 'frontassets/js/app-min.js',
     path: path.join(__dirname, '../build/client'),
@@ -24,8 +24,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: 'happypack/loader?id=babel',
+        test: /\.(ts|js)x?$/,
+        use: ['babel-loader', 'cache-loader'],
         exclude: /node_modules/,
       },
       {
@@ -64,11 +64,6 @@ module.exports = {
   },
 
   plugins: [
-    new HappyPack({
-      id: 'babel',
-      threadPool: happyThreadPool,
-      loaders: ['babel-loader', 'cache-loader'],
-    }),
     new webpack.DefinePlugin({
       'process.env.BROWSER': JSON.stringify(true),
     }),

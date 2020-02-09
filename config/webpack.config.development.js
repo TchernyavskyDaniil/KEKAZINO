@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const Merge = require('webpack-merge');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,7 +10,7 @@ module.exports = () =>
     module: {
       rules: [
         {
-          test: /\.s?css$/,
+          test: /\.(css|pcss)$/,
           exclude: /node_modules/,
           use: [
             {
@@ -20,7 +21,7 @@ module.exports = () =>
               options: { sourceMap: true },
             },
             {
-              loader: 'sass-loader',
+              loader: 'postcss-loader',
               options: { sourceMap: true },
             },
           ],
@@ -32,17 +33,19 @@ module.exports = () =>
         },
       ],
     },
-    devtool: 'inline-source-map',
+    mode: 'development',
     devServer: {
-      historyApiFallback: {
-        disableDotRule: true,
-      },
-      progress: true,
+      port: 3000,
+      open: false,
+      historyApiFallback: true,
+      hot: true,
+      overlay: true,
     },
+    devtool: 'inline-source-map',
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
+        analyzerHost: 'localhost',
         analyzerPort: 8888,
         openAnalyzer: false,
       }),
@@ -57,6 +60,9 @@ module.exports = () =>
       }),
       new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'async',
+      }),
+      new webpack.DefinePlugin({
+        'process.env.DEV': JSON.stringify(true),
       }),
     ],
   });
