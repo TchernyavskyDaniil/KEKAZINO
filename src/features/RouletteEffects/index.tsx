@@ -11,12 +11,9 @@ import { ROULETTE_SLOTS_EFFECTS } from '@lib/constants';
 import { useRouletteStyles } from '@pages/Roulette/useRouletteStyles';
 
 import { useRouletteSlots } from '@features/useRouletteSlots';
+import { RouletteEffectsProps } from '@features/RouletteEffects/interface';
 
-interface RouletteEffectsProps {
-  handleOnClickToGoUploadPage: (
-    ev: React.MouseEvent<HTMLButtonElement>,
-  ) => void;
-}
+import './styles.pcss';
 
 export const RouletteEffects: React.FC<RouletteEffectsProps> = ({
   handleOnClickToGoUploadPage,
@@ -53,10 +50,12 @@ export const RouletteEffects: React.FC<RouletteEffectsProps> = ({
                   style={{
                     height: isDone ? 'auto' : slotsHeight,
                   }}>
-                  {isDone && <span>{value}</span>}
+                  {isDone && <span className="slots__effect">{value}</span>}
                   {!isDone &&
                     ROULETTE_SLOTS_EFFECTS.map(effect => (
-                      <span key={effect}>{effect}</span>
+                      <span className="slots__effect" key={effect}>
+                        {effect}
+                      </span>
                     ))}
                 </div>
               </div>
@@ -77,6 +76,7 @@ export const RouletteEffects: React.FC<RouletteEffectsProps> = ({
         <Button
           variant="contained"
           color="secondary"
+          disabled={isRollAnimation}
           endIcon={<ArrowForward />}
           onClick={handleOnClickToGoUploadPage}
           className={classes.button}>

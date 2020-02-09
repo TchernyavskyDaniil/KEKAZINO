@@ -28,6 +28,7 @@ export const useRouletteSlots: () => {
     slotEffects: Array<string>,
     id: number,
     targetSlotSetter: Function,
+    delay: number,
   ) => {
     const slotRandomValue = getRandomValueFromArray(slotEffects);
 
@@ -38,7 +39,7 @@ export const useRouletteSlots: () => {
           isDone: true,
           value: slotRandomValue,
         }),
-      DEFAULT_TIMEOUT_DELAY,
+      delay,
     );
 
     const newSlotsEffects = slotEffects.filter(
@@ -61,13 +62,15 @@ export const useRouletteSlots: () => {
       newSlotsEffects,
       1,
       setFirstSlot,
+      DEFAULT_TIMEOUT_DELAY,
     );
     newSlotsEffects = await setSlotParamsAfterRoll(
       newSlotsEffects,
       2,
       setSecondSlot,
+      2000,
     );
-    await setSlotParamsAfterRoll(newSlotsEffects, 3, setThirdSlot);
+    await setSlotParamsAfterRoll(newSlotsEffects, 3, setThirdSlot, 1000);
 
     setRollAnimationStatus(false);
   };
