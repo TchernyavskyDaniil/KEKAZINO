@@ -29,14 +29,18 @@ export const Roulette: React.FC = () => {
     setImageUrlExistStatus(isImageSaved);
   }, []);
 
-  const handleOnClickToGoUploadPage = () => {
+  const handleOnClickToGoUploadPage = React.useCallback(() => {
     history.push('/');
-  };
+  }, []);
 
   return (
     <div className={classes.root}>
       {isImageUrlExist === null && <CircularProgress color="secondary" />}
-      {isImageUrlExist && <RouletteEffects />}
+      {isImageUrlExist && (
+        <RouletteEffects
+          handleOnClickToGoUploadPage={handleOnClickToGoUploadPage}
+        />
+      )}
       {isImageUrlExist === false && (
         <>
           <p className="roulette__empty-image-url">

@@ -26,5 +26,8 @@ export const useRouletteStyles = makeStyles((theme: Theme) =>
       position: 'relative',
       overflow: 'hidden',
     },
+    button: {
+      margin: theme.spacing(0, 2),
+    },
   }),
 );
