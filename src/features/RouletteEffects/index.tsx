@@ -11,14 +11,14 @@ import { ROULETTE_SLOTS_EFFECTS } from '@lib/constants';
 import { useRouletteStyles } from '@pages/Roulette/useRouletteStyles';
 
 import { useRouletteSlots } from '@features/useRouletteSlots';
-import { RouletteEffectsProps } from '@features/RouletteEffects/interface';
+import { useHistories } from '@features/useHistories';
 
 import './styles.pcss';
 
-export const RouletteEffects: React.FC<RouletteEffectsProps> = ({
-  handleOnClickToGoUploadPage,
-}) => {
+export const RouletteEffects: React.FC = () => {
   const gridRef = React.useRef<HTMLDivElement>();
+
+  const { pushToUpload } = useHistories();
 
   const classes = useRouletteStyles();
   const {
@@ -78,7 +78,7 @@ export const RouletteEffects: React.FC<RouletteEffectsProps> = ({
           color="secondary"
           disabled={isRollAnimation}
           endIcon={<ArrowForward />}
-          onClick={handleOnClickToGoUploadPage}
+          onClick={pushToUpload}
           className={classes.button}>
           Back
         </Button>

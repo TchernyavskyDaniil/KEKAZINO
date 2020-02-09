@@ -1,6 +1,5 @@
 import React from 'react';
 import { useStore } from 'effector-react';
-import { useHistory } from 'react-router-dom';
 import Image from 'material-ui-image';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -21,6 +20,8 @@ import {
 } from '@pages/ImageUploader/model';
 import { setImageUrlExistStatus } from '@pages/Roulette/model';
 
+import { useHistories } from '@features/useHistories';
+
 import { LS } from '@lib/utils';
 import { STORAGE } from '@lib/constants';
 
@@ -33,7 +34,7 @@ export const ImageUploader: React.FC = () => {
 
   const classes = useUploaderStyles();
 
-  const history = useHistory();
+  const { pushToRoulette } = useHistories();
 
   const handleOnClickToDeleteImage = () => {
     removeUploadedImage();
@@ -47,7 +48,7 @@ export const ImageUploader: React.FC = () => {
 
     LS.set(STORAGE.IMAGE.type, savedImage);
 
-    history.push('/roulette');
+    pushToRoulette();
   };
 
   const handleOnToggleImageToStorage = (

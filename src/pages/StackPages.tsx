@@ -8,6 +8,8 @@ import {
   RouteComponentProps,
 } from 'react-router-dom';
 
+import { Header } from '@features/Header';
+
 import { ImageUploader } from '@pages/ImageUploader/page';
 import { ErrorPage } from '@pages/ErrorPage/page';
 import { Roulette } from '@pages/Roulette/page';
@@ -23,13 +25,16 @@ class StackPages extends React.Component<RouteComponentProps> {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={ImageUploader} />
-        <Route path="/404" component={ErrorPage} />
-        {/* DELETE ROUTES UNDER COMMIT */}
-        <Route path="/roulette" component={Roulette} />
-        <Redirect to="/" />
-      </Switch>
+      <>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={ImageUploader} />
+          <Route path="/404" component={ErrorPage} />
+          {/* DELETE ROUTES UNDER COMMIT */}
+          <Route path="/roulette" component={Roulette} />
+          <Redirect to="/" />
+        </Switch>
+      </>
     );
   }
 }

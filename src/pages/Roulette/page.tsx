@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useStore } from 'effector-react';
-import { useHistory } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -13,6 +12,7 @@ import {
 } from '@pages/Roulette/model';
 
 import { RouletteEffects } from '@features/RouletteEffects';
+import { useHistories } from '@features/useHistories';
 
 import './styles.pcss';
 
@@ -22,25 +22,17 @@ export const Roulette: React.FC = () => {
   const imageUrl = useStore($userImageUrl);
   const isImageUrlExist = useStore($isImageUrlExist);
 
-  const history = useHistory();
+  const { pushToUpload } = useHistories();
 
   React.useEffect(() => {
     const isImageSaved = imageUrl.length > 0;
     setImageUrlExistStatus(isImageSaved);
   }, []);
 
-  const handleOnClickToGoUploadPage = React.useCallback(() => {
-    history.push('/');
-  }, []);
-
   return (
     <div className={classes.root}>
       {isImageUrlExist === null && <CircularProgress color="secondary" />}
-      {isImageUrlExist && (
-        <RouletteEffects
-          handleOnClickToGoUploadPage={handleOnClickToGoUploadPage}
-        />
-      )}
+      {isImageUrlExist && <RouletteEffects />}
       {isImageUrlExist === false && (
         <>
           <p className="roulette__empty-image-url">
@@ -51,7 +43,7 @@ export const Roulette: React.FC = () => {
             variant="contained"
             color="primary"
             size="large"
-            onClick={handleOnClickToGoUploadPage}>
+            onClick={pushToUpload}>
             Back to image upload page
           </Button>
         </>

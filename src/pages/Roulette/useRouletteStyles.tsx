@@ -1,5 +1,4 @@
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { COLORS } from '@lib/constants';
 
 export const useRouletteStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -8,8 +7,6 @@ export const useRouletteStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
-      height: '100vh',
-      backgroundColor: COLORS.MAIN_BACKGROUND,
       flexGrow: 1,
     },
     grid: {

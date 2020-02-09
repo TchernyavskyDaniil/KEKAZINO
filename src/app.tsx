@@ -8,6 +8,9 @@ import StackPages from '@pages/StackPages';
 
 import 'reset-css';
 
+import './assets/variables/styles.pcss';
+import './styles.pcss';
+
 if (process.env.DEV) {
   const createInspector = require('effector-logger').createInspector;
   createInspector();
