@@ -1,4 +1,4 @@
-describe('Cypress', () => {
+describe('Page: Upload page, test: Success image uploader without Local Storage', () => {
     it('open', () => {
         cy.visit('/');
     });

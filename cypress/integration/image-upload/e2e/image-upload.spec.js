@@ -1,4 +1,4 @@
-describe('Cypress', () => {
+describe('Page: Image upload, test: default', () => {
     it('open', () => {
         cy.visit('/');
     })
