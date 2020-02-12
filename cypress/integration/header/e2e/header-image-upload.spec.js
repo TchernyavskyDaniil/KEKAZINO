@@ -14,11 +14,11 @@ describe('Page: Upload Page, test: check header-drawer UI options', () => {
 
     it('Check is Upload button exist', () => {
         cy.get('[data-test-id="drawer-page-upload"]').contains('Upload');
-    })
+    });
 
     it('Check is Kekazio|Roulette button exist', () => {
         cy.get('[data-test-id="drawer-page-kekazino"]').contains('Kekazino');
-    })
+    });
 
     it('is Upload Page have actual skeleton - UI', () => {
         cy.get('[data-test-id="drawer-page-upload"]').click();
