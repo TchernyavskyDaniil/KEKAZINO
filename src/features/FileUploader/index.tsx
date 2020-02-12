@@ -39,6 +39,7 @@ const FileUploaderMemoized: React.FC = () => {
         <Fab
           aria-label="save"
           color="primary"
+          data-test-id="file-uploader-icon"
           className={buttonClassname}
           onClick={handleButtonClick}>
           {isDone ? <CheckIcon /> : <SaveIcon />}
@@ -53,12 +54,14 @@ const FileUploaderMemoized: React.FC = () => {
           color="primary"
           className={buttonClassname}
           disabled={isLoading}
-          onClick={handleButtonClick}>
+          onClick={handleButtonClick}
+          data-test-id="file-uploader-button">
           Choose your best photo!
         </Button>
         <input
           className="file-uploader__hidden"
           onChange={pickNewUserImage}
+          data-test-id="file-uploader-input"
           id="file-upload"
           type="file"
           accept="image/*"

@@ -8,11 +8,11 @@ import './styles.pcss';
 
 export const Header: React.FC = () => {
   return (
-    <>
+    <header>
       <div className="header">
         <TemporaryDrawer />
       </div>
       <Divider />
-    </>
+    </header>
   );
 };

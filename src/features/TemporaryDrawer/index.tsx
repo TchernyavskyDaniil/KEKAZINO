@@ -45,13 +45,17 @@ export const TemporaryDrawer: React.FC = () => {
   return (
     <>
       <Button
+        data-test-id="header-drawer-toggle-button"
         variant="contained"
         color="primary"
         size="medium"
         onClick={toggleDrawer}>
-        <MenuIcon />
+        <MenuIcon data-test-id="drawer-menu-icon" />
       </Button>
-      <Drawer open={isActiveDrawer} onClose={toggleDrawer}>
+      <Drawer
+        open={isActiveDrawer}
+        data-test-id="drawer"
+        onClose={toggleDrawer}>
         <div
           className={classes.list}
           role="presentation"
@@ -62,13 +66,19 @@ export const TemporaryDrawer: React.FC = () => {
               <ListItemIcon>
                 <GetAppIcon />
               </ListItemIcon>
-              <ListItemText primary="Upload" />
+              <ListItemText
+                data-test-id="drawer-page-upload"
+                primary="Upload"
+              />
             </ListItem>
             <ListItem button key="Kekazino" onClick={pushToRoulette}>
               <ListItemIcon>
                 <CasinoIcon />
               </ListItemIcon>
-              <ListItemText primary="Kekazino" />
+              <ListItemText
+                data-test-id="drawer-page-kekazino"
+                primary="Kekazino"
+              />
             </ListItem>
           </List>
           <Divider />

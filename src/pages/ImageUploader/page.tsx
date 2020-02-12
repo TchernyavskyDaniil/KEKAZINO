@@ -58,7 +58,7 @@ export const ImageUploader: React.FC = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} data-test-id="image-upload-container">
       <FileUploader />
       {isDone && imageUrl && (
         <Image
@@ -96,6 +96,7 @@ export const ImageUploader: React.FC = () => {
               color="primary"
               size="medium"
               className={classes.button}
+              data-test-id="button-save-image"
               startIcon={<SaveIcon />}
               onClick={handleOnClickToSaveImage}>
               Save it!
@@ -105,6 +106,7 @@ export const ImageUploader: React.FC = () => {
               color="secondary"
               className={classes.button}
               startIcon={<DeleteIcon />}
+              data-test-id="button-delete-image"
               onClick={handleOnClickToDeleteImage}>
               Nah, delete it
             </Button>
