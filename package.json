@@ -10,6 +10,8 @@
     "build:linux:darwin": "./build.sh",
     "clean": "rimraf ./build/*",
     "fix-code": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run": "./node_modules/.bin/cypress run",
     "lint": "eslint source --quiet"
   },
   "author": "Крохмаль (Чернявский) Даниил",
@@ -33,6 +35,7 @@
     "@babel/preset-typescript": "7.8.3",
     "@babel/register": "7.8.3",
     "@babel/runtime-corejs3": "7.8.4",
+    "@cypress/webpack-preprocessor": "^4.1.1",
     "@hot-loader/react-dom": "^16.11.0",
     "@types/react": "16.9.19",
     "@types/react-dom": "16.9.5",
@@ -47,6 +50,9 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "3.4.2",
     "cssnano": "^4.1.10",
+    "cypress": "^4.0.1",
+    "cypress-file-upload": "^3.5.3",
+    "cypress-react-unit-test": "^2.4.3",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -125,5 +131,11 @@
     "*.{json,eslintrc}": [
       "prettier --write"
     ]
+  },
+  "env": {
+    "cypress-react-unit-test": {
+      "react": "node_modules/react/umd/react.development.js",
+      "react-dom": "node_modules/react-dom/umd/react-dom.development.js"
+    }
   }
 }

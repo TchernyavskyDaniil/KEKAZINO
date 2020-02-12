@@ -37,6 +37,7 @@ export const RouletteEffects: React.FC = () => {
           direction="row"
           justify="center"
           alignItems="center"
+          data-test-id="roulette-counts-container"
           className={classes.grid}>
           {slots.map(({ id, isDone, value }) => (
             <Grid key={id} item className={classes.gridContainer}>
