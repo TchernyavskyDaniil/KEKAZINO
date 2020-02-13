@@ -82,6 +82,7 @@ export const RouletteEffects: React.FC = () => {
           disabled={isRollAnimation}
           endIcon={<ArrowForward />}
           onClick={pushToUpload}
+          data-test-id="roulette-go-to-upload-page"
           className={classes.button}>
           Back
         </Button>

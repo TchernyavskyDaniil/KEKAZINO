@@ -54,31 +54,19 @@ describe('Page: Roulette|Kekazino, test: Uploaded image with roulette', () => {
             .should('have.length', 3);
     });
 
-    it('Lets start KEKAZINO!', () => {
-        cy.get('[data-test-id="roulette-start-button"]').contains('Start Kekazino!').click();
+    it('Roulette page skeleton, ok, go to upload page', () => {
+        cy.get('[data-test-id="roulette-go-to-upload-page"]').contains('Back').click();
     });
 
-    it('Count of active effects', () => {
-        cy.get('[data-test-id="roulette-counts-container"]')
-            .find('.slots__animation-start')
-            .should('have.length', 3)
-    });
+    it('Upload page have UI with uploaded image', async () => {
+        const fileName = 'testFace.png';
+        const fileContent = await cy.fixture(fileName, 'base64');
 
-    it('Timeout effects is done', () => {
-        cy.get('[data-test-id="roulette-counts-container"]')
-            .wait(3000)
-            .find('.slots__animation-start')
-            .eq(0)
-            .should('not.have.class')
+        cy.get('[data-test-id="file-uploader-input"]').upload({ fileContent, fileName, mimeType: 'image/png' });
 
-        cy.get('[data-test-id="roulette-counts-container"]')
-            .wait(2000)
-            .find('.slots__animation-start')
-            .eq(1)
-            .should('not.have.class')
-
-        cy.get('[data-test-id="roulette-counts-container"]')
-            .wait(1000)
-            .should('not.have.class', 'slots__animation-start')
-    });
+        cy.get('[data-test-id="image-upload-container"]').find('img').should('have.attr', 'src')
+        cy.get('[data-test-id="button-save-image"]').contains('Save it!')
+        cy.get('[data-test-id="button-delete-image"]').contains('Nah, delete it')
+        cy.get('.image-uploader__storage-desc').contains('Would you like to save the image inside Storage?')
+    })
 });
