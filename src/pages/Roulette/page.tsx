@@ -35,11 +35,14 @@ export const Roulette: React.FC = () => {
       {isImageUrlExist && <RouletteEffects />}
       {isImageUrlExist === false && (
         <>
-          <p className="roulette__empty-image-url">
+          <p
+            className="roulette__empty-image-url"
+            data-test-id="roulette-without-image">
             {' '}
             Oops, we did not find saved image.{' '}
           </p>
           <Button
+            data-test-id="roulette-button-without-image-to-upload-page"
             variant="contained"
             color="primary"
             size="large"

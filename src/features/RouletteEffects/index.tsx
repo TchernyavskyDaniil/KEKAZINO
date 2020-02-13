@@ -43,6 +43,7 @@ export const RouletteEffects: React.FC = () => {
             <Grid key={id} item className={classes.gridContainer}>
               <div className="slots__animation-wrapper">
                 <div
+                  data-test-id="roulette-effect"
                   className={clsx('slots', {
                     'slots__animation-start': isRollAnimation && !isDone,
                     slots__result: value && isDone,
@@ -71,6 +72,7 @@ export const RouletteEffects: React.FC = () => {
           size="medium"
           disabled={isRollAnimation}
           onClick={activeAnimationForSlots}
+          data-test-id="roulette-start-button"
           className={classes.button}>
           Start Kekazino!
         </Button>
