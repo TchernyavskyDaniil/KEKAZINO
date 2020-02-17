@@ -41,4 +41,8 @@ describe('Page: Upload Page, test: success uploaded image', () => {
     it('Is roulette container exist', () => {
         cy.get('[data-test-id="roulette-counts-container"]').should('be.exist', 2000);
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });

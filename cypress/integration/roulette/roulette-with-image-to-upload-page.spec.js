@@ -69,4 +69,8 @@ describe('Page: Roulette|Kekazino, test: Uploaded image with roulette', () => {
         cy.get('[data-test-id="button-delete-image"]').contains('Nah, delete it')
         cy.get('.image-uploader__storage-desc').contains('Would you like to save the image inside Storage?')
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });

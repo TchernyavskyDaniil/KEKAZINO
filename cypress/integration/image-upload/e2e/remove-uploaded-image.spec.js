@@ -45,4 +45,8 @@ describe('Page: Upload image, test: remove uploaded image', () => {
     it('Is button delete not exist', () => {
         cy.get('[data-test-id="button-delete-image"]').should('not.be.exist')
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 })

@@ -81,4 +81,8 @@ describe('Page: Roulette|Kekazino, test: Uploaded image with roulette', () => {
             .wait(1000)
             .should('not.have.class', 'slots__animation-start')
     });
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });

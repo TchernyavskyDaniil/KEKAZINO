@@ -35,4 +35,8 @@ describe('Page: Roulette|Kekazino Page, test: check header-drawer UI options', (
     it('Click outside from drawer', () => {
         cy.get('[data-test-id="drawer"]').click('center');
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });

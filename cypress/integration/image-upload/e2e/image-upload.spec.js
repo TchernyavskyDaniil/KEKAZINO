@@ -29,4 +29,8 @@ describe('Page: Image upload, test: default', () => {
     it('Is button delete exist', () => {
         cy.get('[data-test-id="button-delete-image"]').contains('Nah, delete it')
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 })

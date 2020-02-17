@@ -23,4 +23,8 @@ describe('Page: Roulette|Kekazino, test: Default without uploaded image', () => 
         cy.get('[data-test-id="file-uploader-icon"]');
         cy.get('[data-test-id="file-uploader-button"]').contains('Choose your best photo!');
     });
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });
