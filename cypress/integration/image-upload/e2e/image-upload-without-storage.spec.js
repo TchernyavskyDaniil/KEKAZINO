@@ -43,4 +43,8 @@ describe('Page: Upload page, test: Success image uploader without Local Storage'
     it('Is roulette container exist', () => {
         cy.get('[data-test-id="roulette-counts-container"]').should('be.exist');
     })
+
+    it('Reload', () => {
+        cy.reload();
+    })
 });

@@ -1,6 +1,6 @@
-describe('Page: Upload Page, test: check header-drawer UI options', () => {
+describe('Page: Roulette|Kekazino Page, test: check header-drawer UI options', () => {
     it('open', () => {
-        cy.visit('/');
+        cy.visit('/roulette');
     });
 
     it('Is exist header toggle button', () => {
@@ -21,12 +21,11 @@ describe('Page: Upload Page, test: check header-drawer UI options', () => {
     });
 
     it('is Upload Page have actual skeleton - UI', () => {
-        cy.get('[data-test-id="drawer-page-upload"]').click();
-        cy.get('[data-test-id="image-upload-container"]');
-        cy.get('[data-test-id="button-save-image"]').should('not.exist');
-        cy.get('[data-test-id="button-delete-image"').should('not.exist');
-        cy.get('[data-test-id="file-uploader-icon"]');
-        cy.get('[data-test-id="file-uploader-button"]').contains('Choose your best photo!');
+        cy.get('[data-test-id="drawer-page-kekazino"]').click();
+
+        cy.get('[data-test-id="roulette-counts-container"]').should('not.exist');
+        cy.get('[data-test-id="roulette-without-image"]').contains('Oops, we did not find saved image.')
+        cy.get('[data-test-id="roulette-button-without-image-to-upload-page"]').contains('Back to image upload page');
     });
 
     it('Open drawer', () => {
